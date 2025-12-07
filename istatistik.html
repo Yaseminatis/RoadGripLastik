@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ROADGRIP - Satış ve Lastik İstatistikleri</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="roadgrip istatistik, lastik satış grafiği, yaz lastiği kış lastiği dağılımı" name="keywords">
+    <meta content="RoadGrip Lastik satış adetleri, mevsimlere ve markalara göre lastik dağılımı, örnek istatistikler." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&family=Work+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+         class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Yükleniyor...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+  <!-- Header Start -->
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-lg-5">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <h2 class="mb-0 text-primary text-uppercase">
+                <i class="fa-solid fa-car-side me-1"></i>ROADGRIP
+            </h2>
+        </a>
+
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto p-4 p-lg-0">
+                <!-- Ana menü linkleri -->
+                <a href="index.html" class="nav-item nav-link">
+                    Ana Sayfa
+                </a>
+
+                <a href="about.html" class="nav-item nav-link">
+                    Hakkımızda
+                </a>
+
+                <a href="misyon-vizyon.html" class="nav-item nav-link">
+                    Misyon &amp; Vizyon
+                </a>
+
+                <a href="service.html" class="nav-item nav-link">
+                    Hizmetler
+                </a>
+
+                <!-- Sayfalar dropdown -->
+                <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"> Sayfalar
+                    </a>
+                    <div class="dropdown-menu m-0">
+                        <a href="lastikler.html" class="dropdown-item">
+                            Lastik Modelleri
+                        </a>
+                        <a href="testimonial.html" class="dropdown-item">
+                            Duyurular &amp; Kampanyalar
+                        </a>
+                        <a href="istatistik.html" class="dropdown-item active">
+                            İstatistikler
+                        </a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="nav-item nav-link">
+                    İletişim
+                </a>
+            </div>
+
+            <div class="d-none d-lg-flex">
+                <a class="btn btn-outline-primary border-2" href="admin-login.html">
+                    Admin Girişi
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Header End -->
+
+    <!-- Stats Content Start -->
+    <div class="container-fluid py-5 bg-secondary">
+        <div class="container py-5">
+            <!-- Üst Özet Kutuları -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="bg-dark text-center p-4 h-100 wow fadeInUp" data-wow-delay="0.1s">
+                        <h5 class="text-primary text-uppercase mb-2">Toplam Satılan Lastik</h5>
+                        <h2 class="text-white mb-0">12.480</h2>
+                        <small class="text-muted">Son 12 ay</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="bg-dark text-center p-4 h-100 wow fadeInUp" data-wow-delay="0.2s">
+                        <h5 class="text-primary text-uppercase mb-2">Müşteri Memnuniyeti</h5>
+                        <h2 class="text-white mb-0">%97</h2>
+                        <small class="text-muted">Anket sonuçlarına göre</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="bg-dark text-center p-4 h-100 wow fadeInUp" data-wow-delay="0.3s">
+                        <h5 class="text-primary text-uppercase mb-2">Yol Yardım Çağrısı</h5>
+                        <h2 class="text-white mb-0">326</h2>
+                        <small class="text-muted">Yıllık ortalama</small>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="bg-dark text-center p-4 h-100 wow fadeInUp" data-wow-delay="0.4s">
+                        <h5 class="text-primary text-uppercase mb-2">Aktif Kampanya</h5>
+                        <h2 class="text-white mb-0">4</h2>
+                        <small class="text-muted">Mevsimsel fırsatlar</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mevsime Göre Dağılım -->
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="bg-dark p-4 h-100 wow fadeInUp" data-wow-delay="0.1s">
+                        <h4 class="text-uppercase mb-3">Mevsimlere Göre Lastik Satış Dağılımı</h4>
+                        <p class="text-white-50">
+                            Aşağıdaki oranlar RoadGrip mağazalarında satılan lastiklerin mevsimsel dağılımını
+                            temsil eden örnek verilerdir. Projede istatistiksel gösterim amacıyla kullanılabilir.
+                        </p>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Yaz Lastikleri</span>
+                                <span>%40</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar"
+                                     style="width: 40%;" aria-valuenow="40" aria-valuemin="0"
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Kış Lastikleri</span>
+                                <span>%35</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar"
+                                     style="width: 35%;" aria-valuenow="35" aria-valuemin="0"
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>4 Mevsim Lastikleri</span>
+                                <span>%25</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar"
+                                     style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                                     aria-valuemax="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <small class="text-muted">
+                            Not: Yüzdeler örnek amaçlıdır, proje raporunda “örnek veri seti” olarak açıklanabilir.
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Marka & Tip Tablosu -->
+                <div class="col-lg-6">
+                    <div class="bg-dark p-4 h-100 wow fadeInUp" data-wow-delay="0.2s">
+                        <h4 class="text-uppercase mb-3">Markalara Göre Satış Adetleri (Örnek)</h4>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped mb-0">
+                                <thead>
+                                <tr>
+                                    <th>Marka</th>
+                                    <th>Yaz</th>
+                                    <th>Kış</th>
+                                    <th>4 Mevsim</th>
+                                    <th>Toplam</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Michelin</td>
+                                    <td>1.250</td>
+                                    <td>980</td>
+                                    <td>620</td>
+                                    <td>2.850</td>
+                                </tr>
+                                <tr>
+                                    <td>Pirelli</td>
+                                    <td>1.050</td>
+                                    <td>870</td>
+                                    <td>540</td>
+                                    <td>2.460</td>
+                                </tr>
+                                <tr>
+                                    <td>Bridgestone</td>
+                                    <td>980</td>
+                                    <td>910</td>
+                                    <td>490</td>
+                                    <td>2.380</td>
+                                </tr>
+                                <tr>
+                                    <td>Lassa</td>
+                                    <td>900</td>
+                                    <td>720</td>
+                                    <td>430</td>
+                                    <td>2.050</td>
+                                </tr>
+                                <tr>
+                                    <td>Diğer</td>
+                                    <td>650</td>
+                                    <td>510</td>
+                                    <td>580</td>
+                                    <td>1.740</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <small class="text-muted">
+                            Tablo verileri, proje kapsamında istatistik ekranı tasarımı için örnek olarak
+                            hazırlanmıştır.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alt Satır: Grafik Gibi Özet -->
+            <div class="row g-4 mt-4">
+                <div class="col-lg-6">
+                    <div class="bg-dark p-4 h-100 wow fadeInUp" data-wow-delay="0.3s">
+                        <h4 class="text-uppercase mb-3">Araç Tipine Göre Satış Oranı</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark text-white d-flex justify-content-between">
+                                <span>Binek Araç</span>
+                                <span>%55</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white d-flex justify-content-between">
+                                <span>SUV / 4x4</span>
+                                <span>%25</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white d-flex justify-content-between">
+                                <span>Ticari Araç</span>
+                                <span>%20</span>
+                            </li>
+                        </ul>
+                        <small class="text-muted">
+                            Bu oranlar, proje isterlerinde geçen “araç türüne göre lastik seçimi” fikrini destekleyici
+                            istatistikler olarak raporda kullanılabilir.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-dark p-4 h-100 wow fadeInUp" data-wow-delay="0.4s">
+                        <h4 class="text-uppercase mb-3">Kısa Değerlendirme</h4>
+                        <p class="text-white-50 mb-2">
+                            • Kış aylarında kış lastiği satışları ciddi oranda artmaktadır.
+                        </p>
+                        <p class="text-white-50 mb-2">
+                            • Binek araçlar toplam satışların yarısından fazlasını oluşturmaktadır.
+                        </p>
+                        <p class="text-white-50 mb-2">
+                            • 4 mevsim lastiklere olan talep özellikle büyük şehirlerde giderek artmaktadır.
+                        </p>
+                        <p class="text-white-50 mb-0">
+                            Bu sayfa, proje sunumunda “istatistiksel bilgiler ve sistem çıktıları” başlığı altında
+                            gösterilebilecek görsel ve sayısal veriler içermektedir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Stats Content End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <a href="index.html">
+                <h1 class="display-4 mb-3 text-white text-uppercase">
+                    <i class="fa-solid fa-car-side me-1"></i>ROADGRIP
+                </h1>
+            </a>
+            <div class="d-flex justify-content-center mb-4">
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p>&copy; <a class="border-bottom" href="#">RoadGrip Lastik</a>, Tüm Hakları Saklıdır.</p>
+
+            <p class="mb-0">
+                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>.
+                Distributed by <a href="https://themewagon.com" target="_blank" class="border-bottom">ThemeWagon</a>.
+            </p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-primary border-2 btn-lg-square back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

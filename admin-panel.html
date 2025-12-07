@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ROADGRIP - Admin Paneli</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="roadgrip admin panel, yönetici ekranı, oto lastik yönetim" name="keywords">
+    <meta content="RoadGrip Lastik yöneticileri için örnek admin paneli." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&family=Work+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Admin Panel Custom Styles (sadece bu sayfa için) -->
+    <style>
+        body {
+            background-color: #050608;
+        }
+
+        .admin-topbar {
+            background: #050608;
+            border-bottom: 1px solid #1b1c20;
+        }
+
+        .admin-card {
+            background: #111319;
+            border-radius: 18px;
+            border: 1px solid #1f2027;
+        }
+
+        .admin-card-header {
+            border-bottom: 1px solid #1f2027;
+        }
+
+        .badge-status {
+            border-radius: 999px;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.7rem;
+        }
+
+        .badge-yayinda {
+            background: rgba(0, 204, 102, 0.12);
+            color: #00d47a;
+        }
+
+        .badge-taslak {
+            background: rgba(255, 193, 7, 0.12);
+            color: #ffc107;
+        }
+
+        .badge-bekliyor {
+            background: rgba(255, 193, 7, 0.12);
+            color: #ffc107;
+        }
+
+        .badge-yanitlandi {
+            background: rgba(13, 202, 240, 0.12);
+            color: #0dcaf0;
+        }
+
+        .badge-acil {
+            background: rgba(220, 53, 69, 0.15);
+            color: #ff6b81;
+        }
+
+        .table-dark td,
+        .table-dark th {
+            vertical-align: middle;
+        }
+
+        .table-dark tr td:first-child {
+            font-weight: 500;
+        }
+
+        .table-actions i {
+            cursor: pointer;
+        }
+
+        .table-actions i:hover {
+            opacity: 0.8;
+        }
+
+        .search-input {
+            max-width: 260px;
+        }
+
+        @media (max-width: 991.98px) {
+            .search-input {
+                max-width: 100%;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Yükleniyor...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Admin Topbar Start (site menüsünden farklı, sadece panel için) -->
+    <div class="container-fluid admin-topbar py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <a href="index.html" class="text-decoration-none me-3">
+                    <h2 class="mb-0 text-primary text-uppercase">
+                        <i class="fa-solid fa-car-side me-1"></i>ROADGRIP
+                    </h2>
+                </a>
+                <span class="text-white-50 d-none d-sm-inline">Admin Paneli</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-none d-md-flex flex-column text-end me-2">
+                    <span class="text-white fw-semibold">Admin Kullanıcı</span>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary border-2 btn-sm dropdown-toggle" type="button"
+                        id="adminMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-regular fa-user me-1"></i> Profil
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
+                        <li>
+                            <button class="dropdown-item" type="button"
+                                data-bs-toggle="modal" data-bs-target="#profileModal">
+                                Profil Ayarları
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" type="button"
+                                data-bs-toggle="modal" data-bs-target="#passwordModal">
+                                Şifre Değiştir
+                            </button>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="admin-login.html">Çıkış Yap</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Topbar End -->
+
+    <!-- Dashboard / Özet Kartlar Start -->
+    <div class="container-fluid py-4">
+        <div class="container">
+
+            <div class="row g-4 mb-4">
+                <!-- Toplam Lastik Ürünü -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card h-100 p-4 text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-uppercase text-white-50">Toplam Lastik Ürünü</small>
+                                <h3 class="mb-1">128</h3>
+                                <small class="text-white-50">Aktif listelenen ürün sayısı</small>
+                            </div>
+                            <span class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center"
+                                style="width:42px;height:42px;">
+                                <i class="fa-solid fa-circle-notch"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aktif Kampanya -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card h-100 p-4 text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-uppercase text-white-50">Aktif Kampanya</small>
+                                <h3 class="mb-1">4</h3>
+                                <small class="text-white-50">Ana sayfada görünen kampanyalar</small>
+                            </div>
+                            <span class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center"
+                                style="width:42px;height:42px;">
+                                <i class="fa-solid fa-tags"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bugünkü Randevu -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card h-100 p-4 text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-uppercase text-white-50">Bugünkü Randevu</small>
+                                <h3 class="mb-1">12</h3>
+                                <small class="text-white-50">Montaj / değişim randevuları</small>
+                            </div>
+                            <span class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center"
+                                style="width:42px;height:42px;">
+                                <i class="fa-regular fa-calendar-check"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Okunmamış Mesaj -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card h-100 p-4 text-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-uppercase text-white-50">Okunmamış Mesaj</small>
+                                <h3 class="mb-1">7</h3>
+                                <small class="text-white-50">İletişim formundan gelen talepler</small>
+                            </div>
+                            <span class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center"
+                                style="width:42px;height:42px;">
+                                <i class="fa-regular fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Dashboard / Özet Kartlar End -->
+
+    <!-- Ana İçerik Start -->
+    <div class="container-fluid pb-5">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- Sol Kolon: Duyurular + Lastik Ürünleri -->
+                <div class="col-xl-7">
+
+                    <!-- Son Duyurular Start -->
+                    <div class="admin-card mb-4">
+                        <div
+                            class="admin-card-header d-flex justify-content-between align-items-center px-4 py-3 text-white">
+                            <div>
+                                <h5 class="mb-0 text-uppercase">Son Duyurular</h5>
+                                <small class="text-white-50">Ana sayfa ve duyurular sayfasında gösterilen içerikler</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary border-2" data-bs-toggle="modal"
+                                data-bs-target="#announcementModal">
+                                <i class="fa-solid fa-plus me-1"></i>Yeni
+                            </button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th>Tarih</th>
+                                        <th>Durum</th>
+                                        <th class="text-end">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="announcementTableBody">
+                                    <tr>
+                                        <td>Kış Lastiği Zorunluluğu</td>
+                                        <td>05.12.2025</td>
+                                        <td><span class="badge-status badge-yayinda">Yayında</span></td>
+                                        <td class="text-end table-actions">
+                                            <i class="fa-regular fa-pen-to-square text-primary me-2 btn-edit-announcement"
+                                                data-bs-toggle="modal" data-bs-target="#announcementModal"></i>
+                                            <i class="fa-regular fa-trash-can text-danger btn-delete-row"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hafta Sonu Çalışma Saatleri</td>
+                                        <td>25.11.2025</td>
+                                        <td><span class="badge-status badge-yayinda">Yayında</span></td>
+                                        <td class="text-end table-actions">
+                                            <i class="fa-regular fa-pen-to-square text-primary me-2 btn-edit-announcement"
+                                                data-bs-toggle="modal" data-bs-target="#announcementModal"></i>
+                                            <i class="fa-regular fa-trash-can text-danger btn-delete-row"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lastik Oteli Sözleşme Güncelleme</td>
+                                        <td>10.11.2025</td>
+                                        <td><span class="badge-status badge-taslak">Taslak</span></td>
+                                        <td class="text-end table-actions">
+                                            <i class="fa-regular fa-pen-to-square text-primary me-2 btn-edit-announcement"
+                                                data-bs-toggle="modal" data-bs-target="#announcementModal"></i>
+                                            <i class="fa-regular fa-trash-can text-danger btn-delete-row"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Son Duyurular End -->
+
+                    <!-- Lastik Ürünleri Start -->
+                    <div class="admin-card" id="lastik-urunleri">
+                        <div
+                            class="admin-card-header d-flex flex-column flex-md-row justify-content-between align-items-md-center px-4 py-3 text-white">
+                            <div>
+                                <h5 class="mb-0 text-uppercase">Lastik Ürünleri</h5>
+                                <small class="text-white-50">Site üzerinde listelenen lastikler</small>
+                            </div>
+                            <div class="d-flex align-items-center flex-column flex-md-row gap-2 mt-3 mt-md-0">
+                                <input type="text" id="tireSearchInput"
+                                    class="form-control bg-secondary border-0 text-white search-input"
+                                    placeholder="Marka / ebat ara...">
+                                <button class="btn btn-sm btn-outline-primary border-2" data-bs-toggle="modal"
+                                    data-bs-target="#tireModal">
+                                    <i class="fa-solid fa-plus me-1"></i>Yeni Lastik Ekle
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark mb-0" id="tireTable">
+                                <thead>
+                                    <tr>
+                                        <th>Marka / Model</th>
+                                        <th>Ebat</th>
+                                        <th>Mevsim</th>
+                                        <th>Segment</th>
+                                        <th>Fiyat (TL)</th>
+                                        <th>Stok</th>
+                                        <th class="text-end">İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Michelin Pilot Sport 4</td>
+                                        <td>225/45 R17</td>
+                                        <td>Yaz</td>
+                                        <td>Performans</td>
+                                        <td>3.299</td>
+                                        <td>32</td>
+                                        <td class="text-end table-actions">
+                                            <i class="fa-regular fa-pen-to-square text-primary me-2 btn-edit-tire"
+                                                data-bs-toggle="modal" data-bs-target="#tireModal"></i>
+                                            <i class="fa-regular fa-trash-can text-danger btn-delete-row"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pirelli Cinturato Winter</td>
+                                        <td>195/65 R15</td>
+                                        <td>Kış</td>
+                                        <td>Binek</td>
+                                        <td>2.199</td>
+                                        <td>54</td>
+                                        <td class="text-end table-actions">
+                                            <i class="fa-regular fa-pen-to-square text-primary me-2 btn-edit-tire"
+                                                data-bs-toggle="modal" data-bs-target="#tireModal"></i>
+                                            <i class="fa-regular fa-trash-can text-danger btn-delete-row"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Continental AllSeasonContact</td>
+                                        <td>195/60 R16</td>
+                                        <td>4 Mevsim</td>
+                                        <td>Binek</td>
+                                        <td>3.199</td>
+                                        <td>18</td>
+                                        <td class="text-end table-actions">
+                                            <i class="fa-regular fa-pen-to-square text-primary me-2 btn-edit-tire"
+                                                data-bs-toggle="modal" data-bs-target="#tireModal"></i>
+                                            <i class="fa-regular fa-trash-can text-danger btn-delete-row"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Michelin Agilis</td>
+                                        <td>215/70 R15C</td>
+                                        <td>4 Mevsim</td>
+                                        <td>Ticari</td>
+                                        <td>3.799</td>
+                                        <td>27</td>
+                                        <td class="text-end table-actions">
+                                            <i class="fa-regular fa-pen-to-square text-primary me-2 btn-edit-tire"
+                                                data-bs-toggle="modal" data-bs-target="#tireModal"></i>
+                                            <i class="fa-regular fa-trash-can text-danger btn-delete-row"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Lastik Ürünleri End -->
+
+                </div>
+
+                <!-- Sağ Kolon: Randevular / Mesajlar + Mini Özet -->
+                <div class="col-xl-5">
+
+                    <!-- Son Randevu & Mesajlar Start -->
+                    <div class="admin-card mb-4">
+                        <div
+                            class="admin-card-header d-flex justify-content-between align-items-center px-4 py-3 text-white">
+                            <div>
+                                <h5 class="mb-0 text-uppercase">Son Randevu & Mesajlar</h5>
+                                <small class="text-white-50">İletişim formundan gelen son talepler</small>
+                            </div>
+                          <button type="button"
+        class="btn btn-sm btn-outline-primary border-2"
+        data-bs-toggle="modal"
+        data-bs-target="#requestsModal">
+    <i class="fa-regular fa-folder-open me-1"></i>Tümünü Gör
+</button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-dark mb-0" id="requestTable">
+                                <thead>
+                                    <tr>
+                                        <th>Ad Soyad</th>
+                                        <th>Talep Türü</th>
+                                        <th>Tarih</th>
+                                        <th>Durum</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-request="Montaj Randevusu">
+                                        <td>Mehmet Yıldız</td>
+                                        <td>Montaj Randevusu</td>
+                                        <td>07.12 • 14:30</td>
+                                        <td><span class="badge-status badge-bekliyor">Bekliyor</span></td>
+                                    </tr>
+                                    <tr data-request="Fiyat Teklifi">
+                                        <td>Ayşe Korkmaz</td>
+                                        <td>Fiyat Teklifi</td>
+                                        <td>07.12 • 11:10</td>
+                                        <td><span class="badge-status badge-yanitlandi">Yanıtlandı</span></td>
+                                    </tr>
+                                    <tr data-request="Yol Yardım Talebi">
+                                        <td>Okan Demir</td>
+                                        <td>Yol Yardım Talebi</td>
+                                        <td>06.12 • 23:40</td>
+                                        <td><span class="badge-status badge-acil">Acil</span></td>
+                                    </tr>
+                                    <tr data-request="Lastik Oteli Bilgi">
+                                        <td>Selin Arslan</td>
+                                        <td>Lastik Oteli Bilgi</td>
+                                        <td>06.12 • 17:05</td>
+                                        <td><span class="badge-status badge-bekliyor">Bekliyor</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Son Randevu & Mesajlar End -->
+
+                    <!-- Mini İstatistik Özet Start (demo amaçlı) -->
+                    <div class="admin-card">
+                        <div class="px-4 py-3 text-white">
+                            <h5 class="mb-2 text-uppercase">İstatistik Özeti</h5>
+                            <small class="text-white-50 d-block mb-3">
+                                Mevsime göre aktif lastik dağılımı (demo verisi)
+                            </small>
+
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Yaz Lastikleri</span>
+                                    <span class="text-white-50">48%</span>
+                                </div>
+                                <div class="progress bg-secondary bg-opacity-25" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" style="width: 48%;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Kış Lastikleri</span>
+                                    <span class="text-white-50">32%</span>
+                                </div>
+                                <div class="progress bg-secondary bg-opacity-25" style="height: 6px;">
+                                    <div class="progress-bar" style="width: 32%;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>4 Mevsim &amp; Ticari</span>
+                                    <span class="text-white-50">20%</span>
+                                </div>
+                                <div class="progress bg-secondary bg-opacity-25" style="height: 6px;">
+                                    <div class="progress-bar" style="width: 20%;"></div>
+                                </div>
+                            </div>
+
+                            <small class="text-white-50" style="font-size: 0.8rem;">
+                                Not: Bu grafikler örnek verilerle hazırlanmıştır. Gerçek proje aşamasında veritabanındaki
+                                satış / stok bilgilerine göre dinamik hale getirilebilir.
+                            </small>
+                        </div>
+                    </div>
+                    <!-- Mini İstatistik Özet End -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Ana İçerik End -->
+
+    <!-- Duyuru Modal (Yeni / Düzenle) -->
+    <div class="modal fade" id="announcementModal" tabindex="-1" aria-labelledby="announcementModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="announcementModalLabel">Duyuru Ekle / Düzenle</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="announcementForm">
+                        <div class="mb-3">
+                            <label for="announcementTitle" class="form-label">Başlık</label>
+                            <input type="text" class="form-control bg-secondary border-0" id="announcementTitle"
+                                placeholder="Örn: Kış Lastiği Zorunluluğu">
+                        </div>
+                        <div class="mb-3">
+                            <label for="announcementDate" class="form-label">Tarih</label>
+                            <input type="date" class="form-control bg-secondary border-0" id="announcementDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="announcementStatus" class="form-label">Durum</label>
+                            <select id="announcementStatus" class="form-select bg-secondary border-0">
+                                <option value="yayinda" selected>Yayında</option>
+                                <option value="taslak">Taslak</option>
+                            </select>
+                        </div>
+                        <div class="mb-0">
+                            <label for="announcementContent" class="form-label">Kısa Açıklama</label>
+                            <textarea id="announcementContent" class="form-control bg-secondary border-0" rows="3"
+                                placeholder="Duyuru içeriğine kısa bir özet yazın (rapor için örnek)."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="button" class="btn btn-primary">Kaydet (Demo)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Randevu & Mesajlar - Tümünü Gör Modal -->
+<div class="modal fade" id="requestsModal" tabindex="-1" aria-labelledby="requestsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title" id="requestsModalLabel">Tüm Randevu &amp; Mesajlar</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Küçük bir filtre alanı (demo) -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <input type="text" id="requestSearchInput"
+                               class="form-control bg-secondary border-0 text-white"
+                               placeholder="Ad soyad / talep türü ara...">
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <small class="text-white-50">
+                            Not: Bu tablo demo amaçlıdır. Gerçek projede veriler veritabanından dinamik yüklenebilir.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-dark mb-0" id="requestModalTable">
+                        <thead>
+                            <tr>
+                                <th>Ad Soyad</th>
+                                <th>Talep Türü</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aynı satırları buraya çoğaltabilirsin, örnek olarak: -->
+                            <tr>
+                                <td>Mehmet Yıldız</td>
+                                <td>Montaj Randevusu</td>
+                                <td>07.12 • 14:30</td>
+                                <td><span class="badge-status badge-bekliyor">Bekliyor</span></td>
+                            </tr>
+                            <tr>
+                                <td>Ayşe Korkmaz</td>
+                                <td>Fiyat Teklifi</td>
+                                <td>07.12 • 11:10</td>
+                                <td><span class="badge-status badge-yanitlandi">Yanıtlandı</span></td>
+                            </tr>
+                            <tr>
+                                <td>Okan Demir</td>
+                                <td>Yol Yardım Talebi</td>
+                                <td>06.12 • 23:40</td>
+                                <td><span class="badge-status badge-acil">Acil</span></td>
+                            </tr>
+                            <tr>
+                                <td>Selin Arslan</td>
+                                <td>Lastik Oteli Bilgi</td>
+                                <td>06.12 • 17:05</td>
+                                <td><span class="badge-status badge-bekliyor">Bekliyor</span></td>
+                            </tr>
+                            <!-- İstersen ekstra hayali kayıtlar da ekleyebilirsin -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Lastik Modal (Yeni / Düzenle) -->
+    <div class="modal fade" id="tireModal" tabindex="-1" aria-labelledby="tireModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="tireModalLabel">Lastik Ürünü Ekle / Düzenle</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="tireForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="tireBrandModel" class="form-label">Marka / Model</label>
+                                <input type="text" class="form-control bg-secondary border-0" id="tireBrandModel"
+                                    placeholder="Örn: Michelin Pilot Sport 4">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="tireSize" class="form-label">Ebat</label>
+                                <input type="text" class="form-control bg-secondary border-0" id="tireSize"
+                                    placeholder="225/45 R17">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="tireSeason" class="form-label">Mevsim</label>
+                                <select id="tireSeason" class="form-select bg-secondary border-0">
+                                    <option>Yaz</option>
+                                    <option>Kış</option>
+                                    <option>4 Mevsim</option>
+                                    <option>Ticari</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tireSegment" class="form-label">Segment</label>
+                                <input type="text" class="form-control bg-secondary border-0" id="tireSegment"
+                                    placeholder="Binek / SUV / Ticari">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tirePrice" class="form-label">Fiyat (TL)</label>
+                                <input type="number" class="form-control bg-secondary border-0" id="tirePrice"
+                                    placeholder="3299">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="tireStock" class="form-label">Stok</label>
+                                <input type="number" class="form-control bg-secondary border-0" id="tireStock"
+                                    placeholder="32">
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-3">
+                            Not: Bu form, ürünlerin nasıl yönetileceğini göstermek için hazırlanmış bir örnektir.
+                            Gerçek uygulamada bu bilgiler veritabanına kaydedilebilir.
+                        </small>
+                    </form>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="button" class="btn btn-primary">Kaydet (Demo)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profil Ayarları Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="profileModalLabel">Profil Ayarları</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label" for="adminName">Ad Soyad</label>
+                            <input type="text" class="form-control bg-secondary border-0" id="adminName"
+                                   value="Admin Kullanıcı">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="adminEmailProfile">E-posta</label>
+                            <input type="email" class="form-control bg-secondary border-0" id="adminEmailProfile"
+                                   value="admin@roadgrip.com">
+                        </div>
+                        <div class="mb-0">
+                            <small class="text-muted">
+                                Bu alanlar sadece arayüz örneğidir. Gerçek projede bilgiler veritabanına kaydedilebilir
+                                ve giriş yapan kullanıcıya göre dinamik olarak doldurulabilir.
+                            </small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-primary">Kaydet (Demo)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Şifre Değiştir Modal -->
+    <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="passwordModalLabel">Şifre Değiştir</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label" for="currentPassword">Mevcut Şifre</label>
+                            <input type="password" class="form-control bg-secondary border-0" id="currentPassword"
+                                   placeholder="Mevcut şifreniz">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="newPassword">Yeni Şifre</label>
+                            <input type="password" class="form-control bg-secondary border-0" id="newPassword"
+                                   placeholder="Yeni şifre">
+                        </div>
+                        <div class="mb-0">
+                            <label class="form-label" for="newPasswordRepeat">Yeni Şifre (Tekrar)</label>
+                            <input type="password" class="form-control bg-secondary border-0" id="newPasswordRepeat"
+                                   placeholder="Yeni şifre tekrar">
+                        </div>
+                        <small class="text-muted d-block mt-3">
+                            Bu form da demo amaçlıdır. Gerçek sistemde şifreler güvenli şekilde hash’lenerek
+                            sunucuya kaydedilmelidir.
+                        </small>
+                    </form>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary">Şifreyi Güncelle (Demo)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer py-4 mt-4">
+        <div class="container text-center">
+            <p class="mb-1">&copy; <a class="border-bottom" href="#">RoadGrip Lastik</a>, Tüm Hakları Saklıdır.</p>
+            <p class="mb-0" style="font-size: 0.85rem;">
+                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>.
+                Distributed by <a href="https://themewagon.com" target="_blank" class="border-bottom">ThemeWagon</a>.
+            </p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-primary border-2 btn-lg-square back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <!-- Admin Panel JS (sadece frontend demo işlemleri) -->
+    <script>
+        // Lastik tablosu arama filtresi
+        
+        const tireSearchInput = document.getElementById('tireSearchInput');
+        const tireTable = document.getElementById('tireTable');
+
+        if (tireSearchInput && tireTable) {
+            tireSearchInput.addEventListener('keyup', function () {
+                const value = this.value.toLowerCase();
+                const rows = tireTable.querySelectorAll('tbody tr');
+
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(value) ? '' : 'none';
+                });
+            });
+        }
+
+        // Satır silme (duyuru + lastik) -> sadece görsel demo
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('btn-delete-row')) {
+                const row = e.target.closest('tr');
+                if (!row) return;
+                const ok = confirm('Bu kaydı silmek istediğinize emin misiniz? (Sadece demo, gerçek veri silinmez)');
+                if (ok) {
+                    row.remove();
+                }
+            }
+        });
+
+        // Modal açılırken başlıkları ayarla (edit / yeni hissi için)
+        const announcementModal = document.getElementById('announcementModal');
+        if (announcementModal) {
+            announcementModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const titleEl = announcementModal.querySelector('.modal-title');
+                if (button && button.classList.contains('btn-edit-announcement')) {
+                    titleEl.textContent = 'Duyuru Düzenle';
+                } else {
+                    titleEl.textContent = 'Yeni Duyuru Ekle';
+                    document.getElementById('announcementForm').reset();
+                }
+            });
+        }
+
+        const tireModal = document.getElementById('tireModal');
+        if (tireModal) {
+            tireModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const titleEl = tireModal.querySelector('.modal-title');
+                if (button && button.classList.contains('btn-edit-tire')) {
+                    titleEl.textContent = 'Lastik Ürünü Düzenle';
+                    // Demo: gerçek projede satırdaki veriler buraya doldurulur.
+                } else {
+                    titleEl.textContent = 'Yeni Lastik Ürünü Ekle';
+                    document.getElementById('tireForm').reset();
+                }
+            });
+        }
+        <!-- Randevu & Mesaj Modal Arama Filtresi (Tümünü Gör butonu için) -->
+
+    // Tümünü Gör butonuna basınca modal aç
+    const requestModal = document.getElementById("requestModal");
+    const requestModalTable = document.getElementById("requestModalTable");
+    const requestSearchInput = document.getElementById("requestSearchInput");
+
+    // Arama filtresi
+    if (requestSearchInput && requestModalTable) {
+        requestSearchInput.addEventListener("keyup", function () {
+            const value = this.value.toLowerCase();
+            const rows = requestModalTable.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(value) ? "" : "none";
+            });
+        });
+    }
+
+
+    </script>
+</body>
+
+</html>

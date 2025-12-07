@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ROADGRIP - Lastik Modelleri ve Araç Bazlı Filtreleme</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="roadgrip lastik modelleri, araç modeline göre lastik filtreleme, yaz lastiği, kış lastiği, 4 mevsim, suv lastik, ticari lastik" name="keywords">
+    <meta content="RoadGrip Lastik; yaz, kış ve 4 mevsim lastik modellerini araç marka, model, yıl ve lastik ölçülerine göre filtreleme imkanı sunar." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&family=Work+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+         class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Yükleniyor...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Header Start -->
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-lg-5">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <h2 class="mb-0 text-primary text-uppercase">
+                <i class="fa-solid fa-car-side me-1"></i>ROADGRIP
+            </h2>
+        </a>
+
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto p-4 p-lg-0">
+                <!-- Ana menü linkleri -->
+                <a href="index.html" class="nav-item nav-link">
+                    Ana Sayfa
+                </a>
+
+                <a href="about.html" class="nav-item nav-link">
+                    Hakkımızda
+                </a>
+
+                <a href="misyon-vizyon.html" class="nav-item nav-link">
+                    Misyon &amp; Vizyon
+                </a>
+
+                <a href="service.html" class="nav-item nav-link">
+                    Hizmetler
+                </a>
+
+                <!-- Sayfalar dropdown -->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
+                        Sayfalar
+                    </a>
+                    <div class="dropdown-menu m-0">
+                        <a href="lastikler.html" class="dropdown-item active">
+                            Lastik Modelleri
+                        </a>
+                        <a href="testimonial.html" class="dropdown-item">
+                            Duyurular &amp; Kampanyalar
+                        </a>
+                        <a href="istatistik.html" class="dropdown-item">
+                            İstatistikler
+                        </a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="nav-item nav-link">
+                    İletişim
+                </a>
+            </div>
+
+            <div class="d-none d-lg-flex">
+                <a class="btn btn-outline-primary border-2" href="admin-login.html">
+                    Admin Girişi
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Header End -->
+
+    <!-- Filtre Formu Start -->
+    <div class="container-fluid py-5 bg-secondary">
+        <div class="container py-4">
+            <div class="title wow fadeInUp mb-4" data-wow-delay="0.1s">
+                <div class="title-center text-center">
+                    <h5>Araç Bilgisine Göre Filtrele</h5>
+                    <h1>Aracınıza Uygun Lastiği Bulun</h1>
+                </div>
+            </div>
+
+            <form id="lastik-filter-form" class="bg-dark p-4 rounded wow fadeInUp" data-wow-delay="0.2s">
+                <div class="row g-3">
+                    <!-- Araç Bilgileri -->
+                    <div class="col-md-3">
+                        <label class="form-label text-white-50">Araç Markası</label>
+                        <select class="form-select bg-secondary border-0">
+                            <option>Marka Seçin</option>
+                            <option>Renault</option>
+                            <option>Fiat</option>
+                            <option>Volkswagen</option>
+                            <option>Opel</option>
+                            <option>BMW</option>
+                            <option>Mercedes</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-white-50">Araç Modeli</label>
+                        <input type="text" class="form-control bg-secondary border-0" placeholder="Örn: Clio, Egea...">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-white-50">Model Yılı</label>
+                        <select class="form-select bg-secondary border-0">
+                            <option>Yıl Seçin</option>
+                            <option>2025</option>
+                            <option>2024</option>
+                            <option>2023</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020 ve Öncesi</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-white-50">Araç Türü</label>
+                        <select class="form-select bg-secondary border-0">
+                            <option>Tür Seçin</option>
+                            <option>Binek</option>
+                            <option>SUV / 4x4</option>
+                            <option>Ticari</option>
+                        </select>
+                    </div>
+
+                    <!-- Lastik Ölçüleri -->
+                    <div class="col-md-2">
+                        <label class="form-label text-white-50">Genişlik</label>
+                        <select class="form-select bg-secondary border-0">
+                            <option>Seçin</option>
+                            <option>185</option>
+                            <option>195</option>
+                            <option>205</option>
+                            <option>215</option>
+                            <option>225</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label text-white-50">Yanak Oranı</label>
+                        <select class="form-select bg-secondary border-0">
+                            <option>Seçin</option>
+                            <option>50</option>
+                            <option>55</option>
+                            <option>60</option>
+                            <option>65</option>
+                            <option>70</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label text-white-50">Jant Çapı</label>
+                        <select class="form-select bg-secondary border-0">
+                            <option>Seçin</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label text-white-50">Mevsim</label>
+                        <select class="form-select bg-secondary border-0">
+                            <option>Tümü</option>
+                            <option>Yaz</option>
+                            <option>Kış</option>
+                            <option>4 Mevsim</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100 py-2">
+                            Uygun Lastikleri Göster
+                        </button>
+                    </div>
+                </div>
+
+                <p class="text-white-50 mt-3 mb-0" style="font-size: 0.9rem;">
+                    Not: Bu filtreleme formu, proje kapsamında <strong>araç modeline ve lastik ebatlarına göre lastik seçimi</strong>
+                    özelliğini arayüz düzeyinde göstermektedir. İleride veritabanı ve dinamik filtreleme ile geliştirilebilir.
+                </p>
+            </form>
+        </div>
+    </div>
+    <!-- Filtre Formu End -->
+
+    <!-- Lastik Kartları (Ürün Listesi) Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+
+            <!-- Genel Başlık -->
+            <div class="text-center mb-4">
+                <div class="title wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="title-center">
+                        <h5>Lastik Modelleri</h5>
+                        <h1>Öne Çıkan Lastikler</h1>
+                    </div>
+                </div>
+                <p class="text-white-50">
+                    Aşağıdaki kartlar, farklı marka ve ölçülerde lastiklerden örneklerdir. Yaz, kış ve 4 mevsim
+                    lastiklerini bir arada görmenizi sağlar.
+                </p>
+            </div>
+
+            <!-- Yaz Lastikleri -->
+            <h3 id="yaz" class="text-uppercase text-primary mb-3">Yaz Lastikleri</h3>
+            <div class="row g-4 mb-5">
+
+                <!-- Michelin Pilot Sport 4 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="lastikler-item">
+                        <div class="lastikler-body">
+                            <img class="img-fluid" src="img/michelin.webp" alt="Michelin Pilot Sport 4">
+                        </div>
+                        <div class="bg-dark text-center p-3">
+                            <h5 class="text-uppercase mb-1">Michelin Pilot Sport 4</h5>
+                            <small class="text-primary d-block mb-1">225/45 R17 • Yaz Lastiği</small>
+                            <small class="text-white-50 d-block mb-1">Binek Araç • Yüksek Performans</small>
+                            <span class="d-block text-white fw-bold mb-2">3.299 TL</span>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-primary border-2 px-3"
+                                        data-bs-toggle="modal" data-bs-target="#michelinPs4Modal">
+                                    Detay
+                                </button>
+                                <a href="#!" class="btn btn-sm btn-primary px-3">Sepete Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goodyear EfficientGrip -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="lastikler-item">
+                        <div class="lastikler-body">
+                            <img class="img-fluid" src="img/goodYear.webp" alt="Goodyear EfficientGrip">
+                        </div>
+                        <div class="bg-dark text-center p-3">
+                            <h5 class="text-uppercase mb-1">Goodyear EfficientGrip</h5>
+                            <small class="text-primary d-block mb-1">215/55 R17 • Yaz Lastiği</small>
+                            <small class="text-white-50 d-block mb-1">Konfor &amp; Düşük Yakıt Tüketimi</small>
+                            <span class="d-block text-white fw-bold mb-2">3.049 TL</span>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-primary border-2 px-3"
+                                        data-bs-toggle="modal" data-bs-target="#goodyearEgModal">
+                                    Detay
+                                </button>
+                                <a href="#!" class="btn btn-sm btn-primary px-3">Sepete Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Kış Lastikleri -->
+            <h3 id="kis" class="text-uppercase text-primary mb-3">Kış Lastikleri</h3>
+            <div class="row g-4 mb-5">
+
+                <!-- Pirelli Cinturato Winter -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="lastikler-item">
+                        <div class="lastikler-body">
+                            <img class="img-fluid" src="img/pirelli.png" alt="Pirelli Cinturato Winter">
+                        </div>
+                        <div class="bg-dark text-center p-3">
+                            <h5 class="text-uppercase mb-1">Pirelli Cinturato Winter</h5>
+                            <small class="text-primary d-block mb-1">195/65 R15 • Kış Lastiği</small>
+                            <small class="text-white-50 d-block mb-1">Binek Araç • Şehir İçi Kullanım</small>
+                            <span class="d-block text-white fw-bold mb-2">2.199 TL</span>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-primary border-2 px-3"
+                                        data-bs-toggle="modal" data-bs-target="#pirelliWinterModal">
+                                    Detay
+                                </button>
+                                <a href="#!" class="btn btn-sm btn-primary px-3">Sepete Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Petlas Snow Master -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="lastikler-item">
+                        <div class="lastikler-body">
+                            <img class="img-fluid" src="img/petlas.webp" alt="Petlas Snow Master">
+                        </div>
+                        <div class="bg-dark text-center p-3">
+                            <h5 class="text-uppercase mb-1">Petlas Snow Master</h5>
+                            <small class="text-primary d-block mb-1">185/65 R15 • Kış Lastiği</small>
+                            <small class="text-white-50 d-block mb-1">Fiyat / Performans</small>
+                            <span class="d-block text-white fw-bold mb-2">1.899 TL</span>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-primary border-2 px-3"
+                                        data-bs-toggle="modal" data-bs-target="#petlasSnowModal">
+                                    Detay
+                                </button>
+                                <a href="#!" class="btn btn-sm btn-primary px-3">Sepete Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 4 Mevsim & SUV / Ticari -->
+            <h3 id="dortmevsim" class="text-uppercase text-primary mb-3">4 Mevsim &amp; SUV / Ticari</h3>
+            <div class="row g-4">
+
+                <!-- Bridgestone Weather Control -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="lastikler-item">
+                        <div class="lastikler-body">
+                            <img class="img-fluid" src="img/bridgestone.webp" alt="Bridgestone Weather Control">
+                        </div>
+                        <div class="bg-dark text-center p-3">
+                            <h5 class="text-uppercase mb-1">Bridgestone Weather Control</h5>
+                            <small class="text-primary d-block mb-1">205/55 R16 • 4 Mevsim</small>
+                            <small class="text-white-50 d-block mb-1">Binek Araç • Tüm Yıl Kullanım</small>
+                            <span class="d-block text-white fw-bold mb-2">2.749 TL</span>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-primary border-2 px-3"
+                                        data-bs-toggle="modal" data-bs-target="#bridgestoneWeatherModal">
+                                    Detay
+                                </button>
+                                <a href="#!" class="btn btn-sm btn-primary px-3">Sepete Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lassa Competus A/T -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="lastikler-item">
+                        <div class="lastikler-body">
+                            <img class="img-fluid" src="img/lassa.webp" alt="Lassa Competus A/T">
+                        </div>
+                        <div class="bg-dark text-center p-3">
+                            <h5 class="text-uppercase mb-1">Lassa Competus A/T</h5>
+                            <small class="text-primary d-block mb-1">235/70 R16 • 4x4 / SUV</small>
+                            <small class="text-white-50 d-block mb-1">Arazi &amp; Şehir Kullanımı</small>
+                            <span class="d-block text-white fw-bold mb-2">3.599 TL</span>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-primary border-2 px-3"
+                                        data-bs-toggle="modal" data-bs-target="#lassaCompetusModal">
+                                    Detay
+                                </button>
+                                <a href="#!" class="btn btn-sm btn-primary px-3">Sepete Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Continental AllSeasonContact -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="lastikler-item">
+                        <div class="lastikler-body">
+                            <img class="img-fluid" src="img/continental.png" alt="Continental AllSeasonContact">
+                        </div>
+                        <div class="bg-dark text-center p-3">
+                            <h5 class="text-uppercase mb-1">Continental AllSeasonContact</h5>
+                            <small class="text-primary d-block mb-1">195/60 R16 • 4 Mevsim</small>
+                            <small class="text-white-50 d-block mb-1">Islak Zeminde Güçlü Performans</small>
+                            <span class="d-block text-white fw-bold mb-2">3.199 TL</span>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-primary border-2 px-3"
+                                        data-bs-toggle="modal" data-bs-target="#continentalAsModal">
+                                    Detay
+                                </button>
+                                <a href="#!" class="btn btn-sm btn-primary px-3">Sepete Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Michelin Agilis -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="lastikler-item">
+                        <div class="lastikler-body">
+                            <img class="img-fluid" src="img/michelin_2.webp" alt="Michelin Agilis">
+                        </div>
+                        <div class="bg-dark text-center p-3">
+                            <h5 class="text-uppercase mb-1">Michelin Agilis</h5>
+                            <small class="text-primary d-block mb-1">215/70 R15C • Ticari</small>
+                            <small class="text-white-50 d-block mb-1">Uzun Ömür &amp; Dayanıklılık</small>
+                            <span class="d-block text-white fw-bold mb-2">3.799 TL</span>
+                            <div class="d-flex justify-content-center gap-2">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-primary border-2 px-3"
+                                        data-bs-toggle="modal" data-bs-target="#michelinAgilisModal">
+                                    Detay
+                                </button>
+                                <a href="#!" class="btn btn-sm btn-primary px-3">Sepete Ekle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Lastik Kartları End -->
+
+    <!-- Ürün Detay Modalları Start -->
+    <!-- Michelin Pilot Sport 4 -->
+    <div class="modal fade" id="michelinPs4Modal" tabindex="-1" aria-labelledby="michelinPs4Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="michelinPs4Label">Michelin Pilot Sport 4</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="img/michelin.webp" class="img-fluid rounded" alt="Michelin Pilot Sport 4">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                Michelin Pilot Sport 4, yüksek performanslı binek araçlar için geliştirilmiş,
+                                virajlarda üstün yol tutuşu ve kısa fren mesafesi sunan premium bir yaz lastiğidir.
+                            </p>
+                            <ul>
+                                <li><strong>Ebat:</strong> 225/45 R17</li>
+                                <li><strong>Mevsim:</strong> Yaz</li>
+                                <li><strong>Hız Sınıfı:</strong> Y</li>
+                                <li><strong>Yük Endeksi:</strong> 94</li>
+                                <li><strong>Yakıt Verimliliği:</strong> A</li>
+                                <li><strong>Islak Zemin Tutuşu:</strong> A</li>
+                            </ul>
+                            <p class="mb-0"><strong>Fiyat:</strong> 3.299 TL (adet)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-primary">Sepete Ekle</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Goodyear EfficientGrip -->
+    <div class="modal fade" id="goodyearEgModal" tabindex="-1" aria-labelledby="goodyearEgLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="goodyearEgLabel">Goodyear EfficientGrip</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="img/goodYear.webp" class="img-fluid rounded" alt="Goodyear EfficientGrip">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                EfficientGrip, yakıt tasarrufu ve konforu bir arada sunan, sessiz sürüşe odaklı bir yaz
+                                lastiğidir. Özellikle uzun yol yapan kullanıcılar için idealdir.
+                            </p>
+                            <ul>
+                                <li><strong>Ebat:</strong> 215/55 R17</li>
+                                <li><strong>Mevsim:</strong> Yaz</li>
+                                <li><strong>Hız Sınıfı:</strong> W</li>
+                                <li><strong>Yük Endeksi:</strong> 94</li>
+                                <li><strong>Yakıt Verimliliği:</strong> B</li>
+                                <li><strong>Islak Zemin Tutuşu:</strong> A</li>
+                            </ul>
+                            <p class="mb-0"><strong>Fiyat:</strong> 3.049 TL (adet)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-primary">Sepete Ekle</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pirelli Cinturato Winter -->
+    <div class="modal fade" id="pirelliWinterModal" tabindex="-1" aria-labelledby="pirelliWinterLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="pirelliWinterLabel">Pirelli Cinturato Winter</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="img/pirelli.png" class="img-fluid rounded" alt="Pirelli Cinturato Winter">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                Kış koşullarında güvenli frenleme ve çekiş sağlayan Cinturato Winter, özellikle şehir
+                                içi binek araç kullanıcıları için geliştirilmiştir.
+                            </p>
+                            <ul>
+                                <li><strong>Ebat:</strong> 195/65 R15</li>
+                                <li><strong>Mevsim:</strong> Kış</li>
+                                <li><strong>Hız Sınıfı:</strong> H</li>
+                                <li><strong>Yük Endeksi:</strong> 91</li>
+                                <li><strong>Yakıt Verimliliği:</strong> C</li>
+                                <li><strong>Islak Zemin Tutuşu:</strong> B</li>
+                            </ul>
+                            <p class="mb-0"><strong>Fiyat:</strong> 2.199 TL (adet)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-primary">Sepete Ekle</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Petlas Snow Master -->
+    <div class="modal fade" id="petlasSnowModal" tabindex="-1" aria-labelledby="petlasSnowLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="petlasSnowLabel">Petlas Snow Master</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="img/petlas.webp" class="img-fluid rounded" alt="Petlas Snow Master">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                Uygun fiyatlı ve güvenilir performans sunan Snow Master, kar ve buzlu yollarda
+                                tutunmayı artıran blok yapısına sahiptir.
+                            </p>
+                            <ul>
+                                <li><strong>Ebat:</strong> 185/65 R15</li>
+                                <li><strong>Mevsim:</strong> Kış</li>
+                                <li><strong>Hız Sınıfı:</strong> H</li>
+                                <li><strong>Yük Endeksi:</strong> 88</li>
+                                <li><strong>Yakıt Verimliliği:</strong> D</li>
+                                <li><strong>Islak Zemin Tutuşu:</strong> B</li>
+                            </ul>
+                            <p class="mb-0"><strong>Fiyat:</strong> 1.899 TL (adet)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-primary">Sepete Ekle</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bridgestone Weather Control -->
+    <div class="modal fade" id="bridgestoneWeatherModal" tabindex="-1" aria-labelledby="bridgestoneWeatherLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="bridgestoneWeatherLabel">Bridgestone Weather Control</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="img/bridgestone.webp" class="img-fluid rounded" alt="Bridgestone Weather Control">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                Weather Control, yılın büyük bölümünde dengeli performans sunan, yağışlı ve kuru
+                                zeminlerde güvenli kavrama sağlayan bir 4 mevsim lastiğidir.
+                            </p>
+                            <ul>
+                                <li><strong>Ebat:</strong> 205/55 R16</li>
+                                <li><strong>Mevsim:</strong> 4 Mevsim</li>
+                                <li><strong>Hız Sınıfı:</strong> V</li>
+                                <li><strong>Yük Endeksi:</strong> 91</li>
+                                <li><strong>Yakıt Verimliliği:</strong> B</li>
+                                <li><strong>Islak Zemin Tutuşu:</strong> B</li>
+                            </ul>
+                            <p class="mb-0"><strong>Fiyat:</strong> 2.749 TL (adet)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-primary">Sepete Ekle</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lassa Competus A/T -->
+    <div class="modal fade" id="lassaCompetusModal" tabindex="-1" aria-labelledby="lassaCompetusLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="lassaCompetusLabel">Lassa Competus A/T</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="img/lassa.webp" class="img-fluid rounded" alt="Lassa Competus A/T">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                Competus A/T, hem asfalt yollarda hem de hafif arazi koşullarında kullanılabilen,
+                                SUV ve 4x4 araçlar için tasarlanmış dayanıklı bir lastiktir.
+                            </p>
+                            <ul>
+                                <li><strong>Ebat:</strong> 235/70 R16</li>
+                                <li><strong>Mevsim:</strong> 4 Mevsim</li>
+                                <li><strong>Hız Sınıfı:</strong> T</li>
+                                <li><strong>Yük Endeksi:</strong> 106</li>
+                                <li><strong>Yakıt Verimliliği:</strong> C</li>
+                                <li><strong>Islak Zemin Tutuşu:</strong> B</li>
+                            </ul>
+                            <p class="mb-0"><strong>Fiyat:</strong> 3.599 TL (adet)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-primary">Sepete Ekle</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Continental AllSeasonContact -->
+    <div class="modal fade" id="continentalAsModal" tabindex="-1" aria-labelledby="continentalAsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="continentalAsLabel">Continental AllSeasonContact</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="img/continental.png" class="img-fluid rounded" alt="Continental AllSeasonContact">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                AllSeasonContact, değişken hava koşullarına sahip bölgelerde yıl boyu kullanılabilen,
+                                özellikle ıslak zemin performansı yüksek bir 4 mevsim lastiğidir.
+                            </p>
+                            <ul>
+                                <li><strong>Ebat:</strong> 195/60 R16</li>
+                                <li><strong>Mevsim:</strong> 4 Mevsim</li>
+                                <li><strong>Hız Sınıfı:</strong> V</li>
+                                <li><strong>Yük Endeksi:</strong> 89</li>
+                                <li><strong>Yakıt Verimliliği:</strong> B</li>
+                                <li><strong>Islak Zemin Tutuşu:</strong> B</li>
+                            </ul>
+                            <p class="mb-0"><strong>Fiyat:</strong> 3.199 TL (adet)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-primary">Sepete Ekle</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Michelin Agilis -->
+    <div class="modal fade" id="michelinAgilisModal" tabindex="-1" aria-labelledby="michelinAgilisLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="michelinAgilisLabel">Michelin Agilis</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img src="img/michelin_2.webp" class="img-fluid rounded" alt="Michelin Agilis">
+                        </div>
+                        <div class="col-md-7">
+                            <p>
+                                Agilis serisi, ticari araçlar için yüksek kilometre ömrü ve dayanıklılık sunar.
+                                Güçlendirilmiş yanak yapısı sayesinde yük altında deformasyonu azaltır.
+                            </p>
+                            <ul>
+                                <li><strong>Ebat:</strong> 215/70 R15C</li>
+                                <li><strong>Mevsim:</strong> 4 Mevsim / Ticari</li>
+                                <li><strong>Hız Sınıfı:</strong> T</li>
+                                <li><strong>Yük Endeksi:</strong> 109/107</li>
+                                <li><strong>Yakıt Verimliliği:</strong> C</li>
+                                <li><strong>Islak Zemin Tutuşu:</strong> B</li>
+                            </ul>
+                            <p class="mb-0"><strong>Fiyat:</strong> 3.799 TL (adet)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-primary">Sepete Ekle</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ürün Detay Modalları End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <a href="index.html">
+                <h1 class="display-4 mb-3 text-white text-uppercase">
+                    <i class="fa-solid fa-car-side me-1"></i>ROADGRIP
+                </h1>
+            </a>
+            <div class="d-flex justify-content-center mb-4">
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p>&copy; <a class="border-bottom" href="#">RoadGrip Lastik</a>, Tüm Hakları Saklıdır.</p>
+
+            <p class="mb-0">
+                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>.
+                Distributed by <a href="https://themewagon.com" target="_blank" class="border-bottom">ThemeWagon</a>.
+            </p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-primary border-2 btn-lg-square back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

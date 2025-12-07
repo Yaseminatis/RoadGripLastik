@@ -1,0 +1,616 @@
+/********** ROADGRIP Tema Renkleri **********/
+:root {
+    /* ROADGRIP konsept renk paleti */
+    --bs-primary: #f6c101;      /* Vurgu: premium sarı / gold */
+    --bs-secondary: #1b1e24;    /* Asfalt koyu gri */
+    --bs-dark: #0a0c0f;         /* Derin asfalt siyahı */
+    --bs-light: #f2f2f2;        /* Yumuşak açık ton */
+}
+
+/********** Genel Body & Link Ayarları **********/
+body {
+    font-family: "Work Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #151821 0%, #05060a 55%, #020307 100%);
+    color: var(--bs-light);
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Josefin Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    letter-spacing: 0.04em;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/********** Bootstrap Renk Override’ları (Tema ile uyum için) **********/
+.bg-dark {
+    background-color: var(--bs-dark) !important;
+}
+
+.bg-secondary {
+    background-color: var(--bs-secondary) !important;
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-outline-primary {
+    color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+/********** Template CSS **********/
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-weight: 600;
+    transition: .5s;
+    border-radius: 50px;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: inherit;
+}
+
+.btn-primary {
+    color: var(--bs-white);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.08);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--bs-primary);
+    color: #000;
+}
+
+
+/*** Form / Input Odak Rengi (İletişim, Admin Giriş vb.) ***/
+.form-control,
+.form-select,
+.form-floating > .form-control,
+.form-floating > .form-select {
+    color: var(--bs-light);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: rgba(246, 193, 1, 0.7);
+    box-shadow: 0 0 0 0.15rem rgba(246, 193, 1, 0.3);
+    background-color: #292d36;
+    color: var(--bs-light);
+}
+
+
+/*** Navbar ***/
+.navbar {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    transition: .5s;
+}
+
+.navbar .navbar-nav .nav-link {
+    margin-right: 25px;
+    padding: 40px 0;
+    color: var(--bs-white);
+    font-size: 17px;
+    text-transform: uppercase;
+    outline: none;
+    transition: .5s;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--bs-primary);
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav .nav-link,
+    .navbar.bg-dark .navbar-nav .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar .navbar-nav {
+        margin-top: 8px;
+        border-top: 1px solid var(--bs-light);
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar.bg-dark .navbar-nav .nav-link {
+        padding: 20px 0;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        border: none;
+        margin-top: 0;
+        top: 150%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+        background-color: #151821;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+
+    .navbar .dropdown-menu .dropdown-item {
+        color: var(--bs-light);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+    }
+
+    .navbar .dropdown-menu .dropdown-item:hover,
+    .navbar .dropdown-menu .dropdown-item.active {
+        background-color: transparent;
+        color: var(--bs-primary);
+    }
+}
+
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+
+/*** Header – GENEL ***/
+.carousel-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 100px;
+    background: rgba(0, 0, 0, .7);
+    z-index: 1;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+@media (max-width: 768px) {
+    #header-carousel .carousel-item {
+        position: relative;
+        min-height: 550px;
+    }
+
+    #header-carousel .carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+/* Tüm sayfalarda kullanılan default page-header */
+.page-header {
+    padding-top: 200px;
+    background: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .85)),
+                url(../img/carousel-1.jpg) top center no-repeat;
+    background-size: cover;
+}
+
+.page-header .breadcrumb-item + .breadcrumb-item::before {
+    color: var(--bs-white);
+}
+
+/* Lastik / İstatistik sayfası için özel header varyasyonu (HTML’de kullanıldı) */
+.page-header-lastikler {
+    background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .9)),
+                url(../img/lastik_header.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+
+/*** Title ***/
+.title {
+    margin-bottom: 2rem;
+}
+
+.title .title-left,
+.title .title-center,
+.title .title-right {
+    display: inline-block;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.title .title-center {
+    text-align: center;
+}
+
+.title .title-right {
+    text-align: right;
+}
+
+.title .title-left h5,
+.title .title-center h5,
+.title .title-right h5 {
+    position: relative;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.title .title-left h5::after,
+.title .title-center h5::before,
+.title .title-center h5::after,
+.title .title-right h5::before {
+    position: absolute;
+    content: "";
+    width: 500%;
+    height: 0;
+    top: 9px;
+    border-bottom: 1px solid var(--bs-white);
+}
+
+.title .title-left h5::after,
+.title .title-center h5::after {
+    left: calc(100% + 15px);
+}
+
+.title .title-right h5::before,
+.title .title-center h5::before {
+    right: calc(100% + 15px);
+}
+
+.title .title-left h1,
+.title .title-center h1,
+.title .title-right h1 {
+    border-bottom: 1px solid var(--bs-white);
+}
+
+
+/*** Service ***/
+.service-item {
+    position: relative;
+    margin-top: 2.5rem;
+    overflow: hidden;
+    border-radius: 32px;
+    background: radial-gradient(circle at top left,
+                rgba(246, 193, 1, 0.16),
+                var(--bs-secondary) 55%,
+                var(--bs-dark) 100%);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .65);
+}
+
+.service-item .service-img {
+    position: relative;
+    display: inline-block;
+    border-radius: 26px;
+    overflow: hidden;
+}
+
+/* Eski kalın oval çerçeve yerine daha soft overlay */
+.service-item .service-img::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    background: radial-gradient(circle at top,
+                rgba(0, 0, 0, .35),
+                transparent 65%);
+    mix-blend-mode: normal;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Sol ve sağ hizalı kartlar orijinal sınıf isimleri korunarak sadeleştirildi */
+.service-item.service-item-left,
+.service-item.service-item-right {
+    border-radius: 32px;
+    background: radial-gradient(circle at top left,
+                rgba(246, 193, 1, 0.14),
+                var(--bs-secondary) 50%,
+                var(--bs-dark) 100%);
+}
+
+@media (max-width: 767.98px) {
+    .service-item.service-item-left,
+    .service-item.service-item-right {
+        border-radius: 24px;
+        background: linear-gradient(to bottom, var(--bs-secondary), var(--bs-dark));
+        text-align: center;
+    }
+}
+
+
+/*** Team ***/
+.team-item {
+    position: relative;
+}
+
+.team-item .team-name {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .7);
+}
+
+.team-item .team-body {
+    position: relative;
+    overflow: hidden;
+}
+
+.team-item .team-body .team-before,
+.team-item .team-body .team-after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: calc(100% - 60px);
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: .5s;
+}
+
+.team-item .team-body .team-after {
+    left: auto;
+    right: 0;
+}
+
+.team-item .team-body .team-before {
+    text-align: right;
+}
+
+.team-item:hover .team-body .team-before,
+.team-item:hover .team-body .team-after {
+    width: 50%;
+}
+
+.team-item .team-body .team-before span,
+.team-item .team-body .team-after span {
+    margin: 5px;
+    color: var(--bs-white);
+    opacity: 0;
+    transition: .5s;
+}
+
+.team-item:hover .team-body .team-before span,
+.team-item:hover .team-body .team-after span {
+    opacity: 1;
+    transition-delay: .2s;
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonial-carousel .owl-dots {
+    margin-top: 35px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dots .owl-dot {
+    width: 60px;
+    height: 60px;
+    margin: 0 5px;
+    padding: 10px;
+    background: var(--bs-dark);
+    border-radius: 100px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dots .owl-dot.active {
+    width: 100px;
+    height: 100px;
+}
+
+.testimonial-carousel .owl-dots .owl-dot img {
+    opacity: .1;
+    transition: .5s;
+    border-radius: 100px;
+}
+
+.testimonial-carousel .owl-dots .owl-dot.active img {
+    opacity: 1;
+}
+
+
+/*** Footer ***/
+@keyframes footerAnimatedBg {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -1000px 0;
+    }
+}
+
+.footer {
+    background-image: url(../img/footer2.jpg);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: footerAnimatedBg 50s linear infinite;
+}
+
+/*** ROADGRIP Lastik Kartları ***/
+.lastikler,
+.lastikler-item {
+    background: transparent;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .45);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.lastikler-body,
+.lastikler-item .lastikler-body {
+    background: radial-gradient(circle at top, #111318, #05070b);
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+}
+
+.lastikler-body img,
+.lastikler-item .lastikler-body img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .7));
+}
+
+.lastikler:hover,
+.lastikler-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, .6);
+}
+
+.lastikler .bg-dark,
+.lastikler-item .bg-dark {
+    background: linear-gradient(135deg, #0c0f16, #151926) !important;
+    border-top: 1px solid rgba(255, 255, 255, .06);
+}
+
+.lastikler .text-primary,
+.lastikler-item .text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.lastikler .btn,
+.lastikler-item .btn {
+    font-size: 0.8rem;
+}
+
+.lastikler .btn-primary,
+.lastikler-item .btn-primary {
+    background: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.lastikler .btn-primary:hover,
+.lastikler-item .btn-primary:hover {
+    filter: brightness(1.08);
+}
+
+.lastikler .btn-outline-primary,
+.lastikler-item .btn-outline-primary {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+}
+
+.lastikler .btn-outline-primary:hover,
+.lastikler-item .btn-outline-primary:hover {
+    background: var(--bs-primary);
+    color: #000;
+}
+
+/* Küçük ekranlarda kart araları biraz nefes alsın */
+@media (max-width: 575.98px) {
+    .lastikler,
+    .lastikler-item {
+        margin-bottom: 1rem;
+    }
+}
+/* === LASTİK KARTLARINI AYNI BOY YAP === */
+
+/* Kart gövdesi: hepsi aynı yükseklikte olsun */
+.lastikler-item {
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;   /* 360'tı, biraz artırdım istersen bu değeri oynayabilirsin */
+}
+
+.lastikler-item .bg-dark {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Başlıklar satır farkından dolayı kartı bozmasın diye minimum yükseklik */
+.lastikler-item h5 {
+    min-height: 40px;  /* çok uzun başlıklar için gerekirse 48 yapabilirsin */
+}

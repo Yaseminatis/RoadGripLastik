@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ROADGRIP - Lastik Hizmetlerimiz</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="lastik montaj, rot balans, lastik oteli, yol yardım, oto lastik servisi, roadgrip" name="keywords">
+    <meta content="RoadGrip hizmetleri: lastik montajı, rot-balans, lastik oteli ve 7/24 yol yardım hizmetleri." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;700&family=Work+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+         class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Yükleniyor...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Header Start -->
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-lg-5">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <h2 class="mb-0 text-primary text-uppercase">
+                <i class="fa-solid fa-car-side me-1"></i>ROADGRIP
+            </h2>
+        </a>
+
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto p-4 p-lg-0">
+                <!-- Ana menü linkleri -->
+                <a href="index.html" class="nav-item nav-link">
+                    Ana Sayfa
+                </a>
+
+                <a href="about.html" class="nav-item nav-link">
+                    Hakkımızda
+                </a>
+
+                <a href="misyon-vizyon.html" class="nav-item nav-link">
+                    Misyon &amp; Vizyon
+                </a>
+
+                <a href="service.html" class="nav-item nav-link active">
+                    Hizmetler
+                </a>
+
+                <!-- Sayfalar dropdown -->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        Sayfalar
+                    </a>
+                    <div class="dropdown-menu m-0">
+                        <a href="lastikler.html" class="dropdown-item">
+                            Lastik Modelleri
+                        </a>
+                        <a href="testimonial.html" class="dropdown-item">
+                            Duyurular &amp; Kampanyalar
+                        </a>
+                        <a href="istatistik.html" class="dropdown-item">
+                            İstatistikler
+                        </a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="nav-item nav-link">
+                    İletişim
+                </a>
+            </div>
+
+            <div class="d-none d-lg-flex">
+                <a class="btn btn-outline-primary border-2" href="admin-login.html">
+                    Admin Girişi
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Header End -->
+
+
+    <!-- Service Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center">
+                <div class="title wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="title-center">
+                        <h5>ROADGRIP SERVİS</h5>
+                        <h1>Lastik ve Yol Güvenliği Hizmetlerimiz</h1>
+                    </div>
+                </div>
+                <p class="mb-5 wow fadeInUp" data-wow-delay="0.2s">
+                    Aracınızın yol ile tek temas noktası lastiklerdir. RoadGrip olarak; doğru lastik seçimi,
+                    profesyonel montaj ve düzenli bakım ile güvenli sürüş deneyimini en üst seviyeye çıkarmayı
+                    hedefliyoruz.
+                </p>
+            </div>
+
+            <!-- Hizmet 1: Lastik Montaj & Değişim -->
+            <div class="service-item service-item-left" id="montaj">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-5">
+                        <div class="service-img p-5 wow fadeInRight" data-wow-delay="0.2s">
+                            <img class="img-fluid" src="img/montaj.jpg" alt="Lastik montaj ve değişim">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="service-text px-5 px-md-0 py-md-5 wow fadeInRight" data-wow-delay="0.5s">
+                            <h3 class="text-uppercase">Lastik Montaj &amp; Değişim</h3>
+                            <p class="mb-4">
+                                Yeni lastik satın aldığınızda ya da mevsim geçişlerinde lastik değişimi gerektiğinde;
+                                jant ve bijon yapınıza uygun ekipmanlarla, aracınıza zarar vermeden lastik sökme-takma
+                                işlemlerini gerçekleştiriyoruz. Doğru tork ile sıkılan bijonlar ve hassas montaj
+                                sayesinde hem güvenli sürüş hem de lastiğin ömrü korunmuş olur.
+                            </p>
+                            <a class="btn btn-outline-primary border-2 px-4"
+   href="#!"
+   data-bs-toggle="modal" data-bs-target="#montajModal">
+    Detaylı Bilgi <i class="fa fa-arrow-right ms-1"></i>
+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hizmet 2: Rot & Balans -->
+            <div class="service-item service-item-right" id="rotbalans">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-5 order-md-1 text-md-end">
+                        <div class="service-img p-5 wow fadeInLeft" data-wow-delay="0.2s">
+                            <img class="img-fluid" src="img/rotbalans.jpg" alt="Rot ve balans ayarı">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="service-text px-5 px-md-0 py-md-5 text-md-end wow fadeInLeft" data-wow-delay="0.5s">
+                            <h3 class="text-uppercase">Rot &amp; Balans Ayarı</h3>
+                            <p class="mb-4">
+                                Direksiyon titremesi, aracın sağa-sola çekmesi veya dengesiz lastik aşınmaları
+                                yaşıyorsanız, rot ve balans ayarına ihtiyaç duyuyorsunuz demektir. RoadGrip’te bilgisayarlı
+                                balans makineleri ve hassas ölçüm cihazları ile aracınızın yürüyen aksamını analiz ediyor,
+                                lastiklerinizin yere eşit ve doğru açıyla basmasını sağlıyoruz.
+                            </p>
+                            <a class="btn btn-outline-primary border-2 px-4"
+   href="#!"
+   data-bs-toggle="modal" data-bs-target="#rotBalansModal">
+    Detaylı Bilgi <i class="fa fa-arrow-right ms-1"></i>
+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hizmet 3: Lastik Oteli -->
+            <div class="service-item service-item-left" id="otel">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-5">
+                        <div class="service-img p-5 wow fadeInRight" data-wow-delay="0.2s">
+                            <img class="img-fluid" src="img/lastik_depolama.webp" alt="Lastik oteli depolama">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="service-text px-5 px-md-0 py-md-5 wow fadeInRight" data-wow-delay="0.5s">
+                            <h3 class="text-uppercase">Lastik Oteli (Depolama)</h3>
+                            <p class="mb-4">
+                                Kullanmadığınız yaz veya kış lastiklerinizi evde ya da garajda saklamak zorunda
+                                değilsiniz. Lastik oteli hizmetimiz ile lastiklerinizi; uygun sıcaklık, nem ve
+                                ışık koşullarında, etiketlenmiş ve kayıtlı şekilde muhafaza ediyoruz. Böylece hem
+                                lastiklerinizi deformasyondan koruyor, hem de sizin için yer tasarrufu sağlıyoruz.
+                            </p>
+                          <a class="btn btn-outline-primary border-2 px-4"
+   href="#!"
+   data-bs-toggle="modal" data-bs-target="#otelModal">
+    Detaylı Bilgi <i class="fa fa-arrow-right ms-1"></i>
+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hizmet 4: Yol Yardım -->
+            <div class="service-item service-item-right" id="yolyardim">
+                <div class="row g-0 align-items-center">
+                    <div class="col-md-5 order-md-1 text-md-end">
+                        <div class="service-img p-5 wow fadeInLeft" data-wow-delay="0.2s">
+                            <img class="img-fluid" src="img/yolYardim.jpg" alt="7/24 yol yardım ve yerinde lastik değişimi">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="service-text px-5 px-md-0 py-md-5 text-md-end wow FadeInLeft" data-wow-delay="0.5s">
+                            <h3 class="text-uppercase">7/24 Yol Yardım &amp; Yerinde Değişim</h3>
+                            <p class="mb-4">
+                                Lastik patlaması, bijon arızası veya ani lastik hasarı gibi durumlarda yolda kalmanız
+                                artık zorunluluk değil. RoadGrip yol yardım ekibi; konumunuza en yakın birim ile size
+                                ulaşıp yerinde lastik değişimi, geçici çözüm veya çekici yönlendirmesi sağlar. Böylece
+                                özellikle uzun yolculuklarda kendinizi daha güvende hissedersiniz.
+                            </p>
+                            <a class="btn btn-outline-primary border-2 px-4"
+   href="#!"
+   data-bs-toggle="modal" data-bs-target="#yolYardimModal">
+    Detaylı Bilgi <i class="fa fa-arrow-right ms-1"></i>
+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Hizmet Paketleri Start -->
+    <div class="container-fluid py-5 bg-secondary" id="paketler">
+        <div class="container py-5">
+            <div class="text-center">
+                <div class="title wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="title-center">
+                        <h5>Hizmet Paketleri</h5>
+                        <h1>İhtiyaca Göre RoadGrip Paketleri</h1>
+                    </div>
+                </div>
+                <p class="mb-5 wow fadeInUp" data-wow-delay="0.2s">
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Paket 1 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="bg-dark h-100 p-4 p-lg-5 text-center">
+                        <h4 class="text-uppercase mb-3">Şehir İçi Standart Paket</h4>
+                        <p class="text-white-50">
+                            Binek araçlar için uygun fiyatlı, temel güvenlik ve konfor odaklı paket.
+                        </p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>4 adet yaz lastiği (orta segment)</li>
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Lastik montaj &amp; balans</li>
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Hava basıncı ve diş derinliği kontrolü</li>
+                        </ul>
+                        <h4 class="text-primary mb-3">Başlangıç Paketi</h4>
+                        <small class="text-white-50 d-block">
+                        
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Paket 2 -->
+                <div class="col-lg-4 col-md-6 wow FadeInUp" data-wow-delay="0.3s">
+                    <div class="bg-dark h-100 p-4 p-lg-5 text-center">
+                        <h4 class="text-uppercase mb-3">Uzun Yol Konfor Paketi</h4>
+                        <p class="text-white-50">
+                            Sık seyahat eden sürücüler için konfor ve güvenliği artıran kapsamlı paket.
+                        </p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>4 adet premium yaz veya 4 mevsim lastik</li>
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Montaj, rot &amp; balans ayarı</li>
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Sezonluk ücretsiz kontrol randevusu</li>
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Belirli bölgelerde yol yardım önceliği</li>
+                        </ul>
+                        <h4 class="text-primary mb-3">Orta Seviye Paket</h4>
+                        <small class="text-white-50 d-block">
+                           
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Paket 3 -->
+                <div class="col-lg-4 col-md-12 wow FadeInUp" data-wow-delay="0.4s">
+                    <div class="bg-dark h-100 p-4 p-lg-5 text-center">
+                        <h4 class="text-uppercase mb-3">Filo &amp; Ticari Paket</h4>
+                        <p class="text-white-50">
+                            Birden fazla araca sahip firmalar ve ticari kullanıcılar için özel bakım paketi.
+                        </p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>10+ araç için lastik ve montaj indirimi</li>
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Periyodik rot-balans planlaması</li>
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>Lastik oteli (depolama) avantajı</li>
+                            <li class="mb-2"><i class="fa fa-check text-primary me-2"></i>7/24 yol yardım sözleşmesi</li>
+                        </ul>
+                        <h4 class="text-primary mb-3">Kurumsal Paket</h4>
+                        <small class="text-white-50 d-block">
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hizmet Paketleri End -->
+
+
+<!-- Testimonial Start -->
+<div class="container-fluid py-5 bg-secondary">
+    <div class="container py-5">
+        <div class="text-center">
+            <div class="title wow fadeInUp" data-wow-delay="0.1s">
+                <div class="title-center">
+                    <h5>Müşteri Yorumları</h5>
+                    <h1>RoadGrip Hakkında Ne Söylediler?</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.3s">
+
+            <!-- Yorum 1 -->
+            <div class="testimonial-item text-center">
+                <p class="fs-5">
+                    “Kış lastiklerimi RoadGrip’ten aldım. Montaj ve balans işlemleri çok kısa sürede ve özenle yapıldı. 
+                    Fiyat performans olarak da gayet memnun kaldım.”
+                </p>
+                <h5 class="text-uppercase">Ahmet Yılmaz</h5>
+                <span class="text-primary">Binek Araç Kullanıcısı</span>
+            </div>
+
+            <!-- Yorum 2 -->
+            <div class="testimonial-item text-center">
+                <p class="fs-5">
+                    “Filo araçlarımızın lastik değişim ve rot-balans işlemlerini RoadGrip’e emanet ediyoruz. 
+                    Hem kurumsal yaklaşım hem de hız açısından işimizi çok kolaylaştırdılar.”
+                </p>
+                <h5 class="text-uppercase">Selin Kaya</h5>
+                <span class="text-primary">Filo Yöneticisi</span>
+            </div>
+
+            <!-- Yorum 3 -->
+            <div class="testimonial-item text-center">
+                <p class="fs-5">
+                    “Gece otoyolda lastiğim patladı, RoadGrip yol yardım ekibi kısa sürede gelip yerinde değişim yaptı. 
+                    Gerçekten profesyonel ve güven veren bir ekip.”
+                </p>
+                <h5 class="text-uppercase">Mehmet Karaca</h5>
+                <span class="text-primary">Ticari Araç Sürücüsü</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+<!-- ===================== -->
+<!--  HİZMET DETAY MODALLARI -->
+<!-- ===================== -->
+
+<!-- Montaj Modal -->
+<div class="modal fade" id="montajModal" tabindex="-1" aria-labelledby="montajModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title" id="montajModalLabel">Lastik Montaj & Değişim – Detaylı Bilgi</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5">
+            <img src="img/montaj.jpg" class="img-fluid rounded" alt="Lastik montaj ve değişim">
+          </div>
+          <div class="col-md-7">
+            <p>
+              RoadGrip’te lastik montajı; jant yapısına uygun ekipmanlarla, üretici tavsiyelerine göre
+              <strong>doğru tork</strong> değerlerinde yapılır. Böylece hem güvenlik hem de lastik ömrü korunur.
+            </p>
+            <ul>
+              <li>Profesyonel lastik sökme–takma makineleri</li>
+              <li>Bijonların tork anahtarı ile sıkılması</li>
+              <li>Lastik hava basınçlarının fabrika değerlerine göre ayarlanması</li>
+              <li>Valf kontrolü ve gerekiyorsa değişimi</li>
+            </ul>
+            <p class="mb-0"><strong>Ortalama işlem süresi:</strong> 4 lastik için ~30 dk.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-secondary">
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+        <a href="contact.html" class="btn btn-primary">Montaj Randevusu Al</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Rot Balans Modal -->
+<div class="modal fade" id="rotBalansModal" tabindex="-1" aria-labelledby="rotBalansModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title" id="rotBalansModalLabel">Rot & Balans Ayarı – Detaylı Bilgi</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5">
+            <img src="img/rotbalans.jpg" class="img-fluid rounded" alt="Rot ve balans ayarı">
+          </div>
+          <div class="col-md-7">
+            <p>
+              Rot ve balans ayarı, direksiyon hakimiyeti ve lastiklerin eşit aşınması için zorunlu bir bakımdır.
+              Özellikle <strong>direksiyon titremesi</strong> veya <strong>aracın sağa–sola çekmesi</strong>
+              gibi şikayetlerde ilk kontrol edilmesi gereken noktadır.
+            </p>
+            <ul>
+              <li>Bilgisayarlı balans makinesi ile hassas ölçüm</li>
+              <li>Ön düzen (rot) açı değerlerinin kontrolü</li>
+              <li>Dengesiz lastik aşınmalarının tespiti</li>
+              <li>Süspansiyon ve rot başı gözle kontrolü</li>
+            </ul>
+            <p class="mb-0"><strong>Önerilen periyot:</strong> Her 10.000 km’de bir veya mevsim geçişlerinde.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-secondary">
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+        <a href="contact.html" class="btn btn-primary">Rot & Balans İçin Randevu Al</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lastik Oteli Modal -->
+<div class="modal fade" id="otelModal" tabindex="-1" aria-labelledby="otelModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title" id="otelModalLabel">Lastik Oteli (Depolama) – Detaylı Bilgi</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5">
+            <img src="img/lastik_depolama.webp" class="img-fluid rounded" alt="Lastik Oteli Depolama">
+          </div>
+          <div class="col-md-7">
+            <p>
+              Mevsimlik lastikleriniz, evde uygunsuz koşullarda beklediğinde performans kaybı yaşayabilir.
+              RoadGrip Lastik Oteli, lastiklerinizi <strong>kayıtlı, etiketli ve sigortalı</strong> biçimde saklar.
+            </p>
+            <ul>
+              <li>Sıcaklık ve nem kontrollü kapalı alan</li>
+              <li>Plaka bazlı etiketleme ve raf sistemi</li>
+              <li>7/24 kamera ile güvenlik takibi</li>
+              <li>Mevsim değişimlerinde müşteriye bilgilendirme</li>
+            </ul>
+            <p class="mb-0"><strong>Depolama ücreti:</strong> Set başı 499 TL / sezon (örnek veri).</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-secondary">
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+        <a href="contact.html" class="btn btn-primary">Lastik Oteli Kaydı Oluştur</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Yol Yardım Modal -->
+<div class="modal fade" id="yolYardimModal" tabindex="-1" aria-labelledby="yolYardimModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title" id="yolYardimModalLabel">7/24 Yol Yardım & Yerinde Değişim – Detaylı Bilgi</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4 align-items-center">
+          <div class="col-md-5">
+            <img src="img/yolYardim.jpg" class="img-fluid rounded" alt="Yol yardım hizmeti">
+          </div>
+          <div class="col-md-7">
+            <p>
+              Lastik patlaması, yanak yarılması veya bijon arızası gibi durumlarda RoadGrip yol yardım ekibi
+              konumunuza en kısa sürede ulaşır ve <strong>yerinde lastik değişimi</strong> sağlar.
+            </p>
+            <ul>
+              <li>7/24 çağrı hattı üzerinden yol yardım talebi</li>
+              <li>Konuma en yakın mobil ekibin yönlendirilmesi</li>
+              <li>Yerinde geçici veya kalıcı lastik çözümü</li>
+              <li>Gerekirse çekici hizmeti ile servise yönlendirme</li>
+            </ul>
+            <p class="mb-0"><strong>Hizmet kapsamı:</strong> Kocaeli ve çevre iller (örnek senaryo).</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-secondary">
+        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Kapat</button>
+        <a href="contact.html" class="btn btn-primary">Yol Yardım Talep Et</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <a href="index.html">
+                <h1 class="display-4 mb-3 text-white text-uppercase">
+                    <i class="fa-solid fa-car-side me-1"></i>ROADGRIP
+                </h1>
+            </a>
+            <div class="d-flex justify-content-center mb-4">
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a class="btn btn-lg-square btn-outline-primary border-2 m-1" href="#!">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p>&copy; <a class="border-bottom" href="#">RoadGrip Lastik</a>, Tüm Hakları Saklıdır.</p>
+
+            <!-- Template Credit -->
+            <p class="mb-0">
+                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>.
+                Distributed by <a href="https://themewagon.com" class="border-bottom" target="_blank">ThemeWagon</a>.
+            </p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-primary border-2 btn-lg-square back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
